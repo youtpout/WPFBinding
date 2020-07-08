@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPFBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto">
+
+        <ScrollViewer x:Name="MapsScroll" VerticalScrollBarVisibility="Visible">
+            <ItemsControl x:Name="MapsControls" ItemsSource="{Binding Datas}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel x:Name="MapsStack" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding Date}"></TextBlock>
+                            <Button Content="Delete" Command="{Binding ElementName=MapsControls,  Path=DataContext.DeleteCommand}"
+                    CommandParameter="{Binding}"></Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
